@@ -25,11 +25,11 @@ func main() {
 
 	dialer := net.Dialer{}
 	conn, err := dialer.DialContext(context.Background(), "tcp", nodeAddress)
-	defer conn.Close()
-
 	if err != nil {
 		log.Fatalf("Failed to connect: %v\n", err)
 	}
+	defer conn.Close()
+
 	log.Println("Connected successfully to the Bitcoin node.")
 
 	msg, err := message.New(message.Version)
